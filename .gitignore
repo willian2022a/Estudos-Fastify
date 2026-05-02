@@ -1,0 +1,12 @@
+# Dependencias
+node_modules
+
+# Database. O asterisco (*) permite ignorar todos os arquivos que terminam com .db
+db/*.db
+
+# Enviroment
+.env
+.env.test
+
+# Build
+build
