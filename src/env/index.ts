@@ -17,16 +17,15 @@ console.log('>>>>>>>>>>>>>>>>>>>>',process.env.NODE_ENV)
 */
 if(process.env.NODE_ENV === 'test'){
   config({ path: '.env.test' })
-  console.log('>>>>>>>>>>>>>>>>>>>> 111',process.env.NODE_ENV)
 }else{
-console.log('>>>>>>>>>>>>>>>>>>>> 222',process.env.NODE_ENV)
   config() //ao não passar configurações o dotenv vai procurar as configuraçòes no arquivo .env
 }
 
 const envSquema = z.object({
   NODE_ENV: z.enum(['development','test','production']).default('production'),
+  DATABASE_CLIENT: z.enum(['sqlite','pg']),
   DATABASE_URL: z.string(),
-  PORT: z.number().default(3333)
+  PORT: z.coerce.number().default(3333)
 })
 
 const _env = envSquema.safeParse(process.env)
